@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static String TAG = "MainActivity";
 
-    private Button b1, b2, b3;
+    private Button b1, b2, b3, b4;
     private TextView tv1, tv2;
 
     @Override
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
+        b4 = findViewById(R.id.b4);
 
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
@@ -78,4 +79,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void reset(View view) {
+        Log.d(TAG, "reset() method called");
+        tv1.setText("Hello World!");
+        tv1.setBackgroundColor(Color.TRANSPARENT);
+        tv1.setTextColor(Color.GRAY);
+        tv1.setTextSize(14);
+
+        tv2.setText("Play with buttons");
+        tv2.setBackgroundColor(Color.TRANSPARENT);
+        tv2.setTextColor(Color.GRAY);
+        tv2.setTextSize(14);
+    }
 }
