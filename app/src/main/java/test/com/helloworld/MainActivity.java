@@ -7,15 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String TAG = "MainActivity";
 
-    private Button b1, b2, b3, b4, b5, b6;
-    private TextView tv1, tv2;
+    private Button b1, b2, b3, b4, b5, b6, b7;
+    private TextView tv1, tv2, tv3;
     private ProgressBar pb;
+    private RatingBar rb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b3.setOnClickListener(this);
         b5.setOnClickListener(this);
         b6.setOnClickListener(this);
+        b7.setOnClickListener(this);
 
     }
 
@@ -59,11 +62,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b4 = findViewById(R.id.b4);
         b5 = findViewById(R.id.b5);
         b6 = findViewById(R.id.b6);
+        b7 = findViewById(R.id.b7);
 
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
+        tv3 = findViewById(R.id.tv3);
 
         pb = findViewById(R.id.pb);
+
+        rb = findViewById(R.id.rb);
     }
 
 
@@ -101,6 +108,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "B6: onClick: called");
 
                 pb.setVisibility(View.GONE);
+            case R.id.b7:
+                Log.d(TAG, "B7: onClick: called");
+
+                String rating = String.valueOf(rb.getRating());
+                tv3.setText("Score: " + rating);
                 break;
         }
     }
