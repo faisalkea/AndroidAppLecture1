@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         init();
 
-        //Doens't need to implement interface
+        //Doesn't need to implement interface
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
