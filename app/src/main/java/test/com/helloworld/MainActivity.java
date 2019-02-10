@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Initialize view components (Buttons & TextView)
+     */
     private void init() {
         Log.d(TAG, "init called");
 
@@ -55,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv2 = findViewById(R.id.tv2);
     }
 
+
+    /**
+     * Onclick (override method from OnClickListener) method to switch between buttons
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -79,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Onclick method defined in xml view
+     * @param view
+     */
     public void reset(View view) {
         Log.d(TAG, "reset() method called");
         tv1.setText("Hello World!");
