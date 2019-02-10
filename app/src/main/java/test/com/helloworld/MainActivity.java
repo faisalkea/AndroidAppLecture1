@@ -6,14 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String TAG = "MainActivity";
 
-    private Button b1, b2, b3, b4;
+    private Button b1, b2, b3, b4, b5, b6;
     private TextView tv1, tv2;
+    private ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
+        b5.setOnClickListener(this);
+        b6.setOnClickListener(this);
 
     }
 
@@ -53,9 +57,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
         b4 = findViewById(R.id.b4);
+        b5 = findViewById(R.id.b5);
+        b6 = findViewById(R.id.b6);
 
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
+
+        pb = findViewById(R.id.pb);
     }
 
 
@@ -84,6 +92,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv1.setBackgroundColor(Color.RED);
                 tv1.setTextSize(24);
                 break;
+            case R.id.b5:
+                Log.d(TAG, "B5: onClick: called");
+
+                pb.setVisibility(View.VISIBLE);
+                break;
+            case R.id.b6:
+                Log.d(TAG, "B6: onClick: called");
+
+                pb.setVisibility(View.GONE);
+                break;
         }
     }
 
@@ -93,12 +111,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void reset(View view) {
         Log.d(TAG, "reset() method called");
-        tv1.setText("Hello World!");
+
+        tv1.setText(getString(R.string.tv_1));
         tv1.setBackgroundColor(Color.TRANSPARENT);
         tv1.setTextColor(Color.GRAY);
         tv1.setTextSize(14);
 
-        tv2.setText("Play with buttons");
+        tv1.setText(getString(R.string.tv_2));
         tv2.setBackgroundColor(Color.TRANSPARENT);
         tv2.setTextColor(Color.GRAY);
         tv2.setTextSize(14);
