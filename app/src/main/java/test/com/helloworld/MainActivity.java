@@ -1,6 +1,5 @@
 package test.com.helloworld;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void init() {
+        Log.d(TAG, "init called");
+
+        b1 = findViewById(R.id.b1);
+        b2 = findViewById(R.id.b2);
+        b3 = findViewById(R.id.b3);
+
+        tv1 = findViewById(R.id.tv1);
+        tv2 = findViewById(R.id.tv2);
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -67,17 +77,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
-    private void init() {
-        Log.d(TAG, "init called");
-
-        b1 = findViewById(R.id.b1);
-        b2 = findViewById(R.id.b2);
-        b3 = findViewById(R.id.b3);
-
-        tv1 = findViewById(R.id.tv1);
-        tv2 = findViewById(R.id.tv2);
-    }
-
 
 }
