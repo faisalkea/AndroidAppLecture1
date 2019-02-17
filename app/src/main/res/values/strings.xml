@@ -3,5 +3,9 @@
 
     <string name="button1">Button 1</string>
     <string name="tv_2">Play with buttons</string>
-    <string name="tv_1">Hello World!</string>
+    <string name="tv_1">Type of connectivity:</string>
+    <string name="tv_3">Internet Connectivity:</string>
+    <string name="wifi_connection">Wifi.</string>
+    <string name="mobile_connection">Mobile.</string>
+    <string name="no_wifi_or_mobile">No wireless or mobile connection.</string>
 </resources>
