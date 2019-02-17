@@ -1,6 +1,7 @@
 package test.com.helloworld;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static String TAG = "MainActivity";
 
-    private Button b1, b2, b3, b5, b6, b7;
+    private Button b1, b2, b3, b5, b6, b7, b8;
     private TextView tv1, tv2, tv3, tv4;
     private ProgressBar pb;
     private RatingBar rb;
@@ -60,12 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b5 = findViewById(R.id.b5);
         b6 = findViewById(R.id.b6);
         b7 = findViewById(R.id.b7);
+        b8 = findViewById(R.id.b8);
 
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
         b5.setOnClickListener(this);
         b6.setOnClickListener(this);
         b7.setOnClickListener(this);
+        b8.setOnClickListener(this);
 
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
@@ -111,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String rating = String.valueOf(rb.getRating());
                 tv3.setText("Score: " + rating);
+                break;
+            case R.id.b8:
+                Log.d(TAG, "B8: OnClick called");
+                Intent intent = new Intent(this, SpinnerActivity.class);
+                startActivity(intent);
                 break;
         }
     }

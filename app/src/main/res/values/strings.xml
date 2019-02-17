@@ -8,4 +8,7 @@
     <string name="wifi_connection">Wifi.</string>
     <string name="mobile_connection">Mobile.</string>
     <string name="no_wifi_or_mobile">No wireless or mobile connection.</string>
+    <string name="title_activity_spinner">SpinnerActivity</string>
+    <string name="s1">Choose worker</string>
+    <string name="s2">Choose a grade</string>
 </resources>
