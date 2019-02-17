@@ -21,6 +21,12 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
     List<String> Workers = new ArrayList<>();
     List<Integer> grades = new ArrayList<>();
 
+    String stud = "";
+    String grade = "";
+
+    private static final String STUD = "STUDENT";
+    private static final String GRADE = "GRADE";
+
     private TextView tv1, tv2, tv3, tv4;
     private Spinner s1, s2;
 
@@ -37,6 +43,22 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
         setupS1();
         setupS2();
 
+        if(savedInstanceState != null){
+            Log.d(TAG, "Reading from bundle");
+
+            tv3.setText(savedInstanceState.getString(STUD));
+            tv4.setText(savedInstanceState.getString(GRADE));
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        Log.d(TAG, "onSaveInstanceState called");
+
+        outState.putString(STUD, "Student: " + stud);
+        outState.putString(GRADE, "Grade: " + grade);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -133,23 +155,22 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        String item = "";
         if (!userIsInteracting)
             return;
 
         switch (parent.getId()){
             case R.id.s1:
                 Log.d(TAG, "S1 selected");
-                item = parent.getItemAtPosition(position).toString();
+                stud = parent.getItemAtPosition(position).toString();
 
-                tv3.setText("Student: " + item);
+                tv3.setText("Student: " + stud);
                 //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.s2:
                 Log.d(TAG, "S2 selected");
-                item = parent.getItemAtPosition(position).toString();
+                grade = parent.getItemAtPosition(position).toString();
 
-                tv4.setText("Grade: " + item);
+                tv4.setText("Grade: " + grade);
                 //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
                 break;
         }
