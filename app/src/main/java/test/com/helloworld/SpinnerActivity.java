@@ -1,12 +1,14 @@
 package test.com.helloworld;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,7 +35,7 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
 
     private TextView tv1, tv2, tv3, tv4;
     private Spinner s1, s2;
-    private Button b1, b2, b3;
+    private Button b1, b2, b3, b4;
 
     private boolean userIsInteracting;
 
@@ -163,6 +165,8 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
         b2.setOnClickListener(this);
         b3 = findViewById(R.id.bs3);
         b3.setOnClickListener(this);
+        b4 = findViewById(R.id.bs4);
+        b4.setOnClickListener(this);
     }
 
     @Override
@@ -229,6 +233,30 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
                 textView.setTextColor(Color.GREEN);
                 snackbar2.show();
                 break;
+            case R.id.bs4:
+                LayoutInflater factory = LayoutInflater.from(this);
+                final View deleteDialogView = factory.inflate(R.layout.dialog_demo, null);
+
+                final AlertDialog dialog = new AlertDialog.Builder(this).create();
+                dialog.setView(deleteDialogView);
+                dialog.setTitle(R.string.dialog_title);
+
+                deleteDialogView.findViewById(R.id.dialog_ok).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i(TAG, "Ok dialog");
+                        dialog.dismiss();
+                    }
+                });
+                deleteDialogView.findViewById(R.id.dialog_cancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i(TAG, "Cancel dialog");
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
         }
     }
 
