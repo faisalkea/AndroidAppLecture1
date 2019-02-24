@@ -1,12 +1,16 @@
 package test.com.helloworld;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpinnerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class SpinnerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private static String TAG = " SpinnerActivity";
 
@@ -29,6 +33,7 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
 
     private TextView tv1, tv2, tv3, tv4;
     private Spinner s1, s2;
+    private Button b1, b2, b3;
 
     private boolean userIsInteracting;
 
@@ -151,6 +156,80 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
 
         s2.setSelection(0,false);
         s2.setOnItemSelectedListener(this);
+
+        b1 = findViewById(R.id.bs1);
+        b1.setOnClickListener(this);
+        b2 = findViewById(R.id.bs2);
+        b2.setOnClickListener(this);
+        b3 = findViewById(R.id.bs3);
+        b3.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+
+        switch (id){
+            case R.id.bs1:
+                Toast.makeText(this, "This is a toast", Toast.LENGTH_LONG).show();
+
+                //Toast.makeText(view.getContext(), "This is a toast", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "This is a toast", Toast.LENGTH_LONG).show();
+
+                /*Toast toast = new Toast(this);
+                toast.setText("This a toast (2)");
+                toast.show();*/
+
+                break;
+            case R.id.bs2:
+                Snackbar snackbar = Snackbar
+                        .make(view, "This is a Snackbar", Snackbar.LENGTH_LONG);
+
+                snackbar.show();
+                break;
+            case R.id.bs3:
+                Snackbar snackbar2 = Snackbar
+                        .make(view, "An Error Occurred!", Snackbar.LENGTH_LONG)
+                        .setAction("RETRY", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Log.i(TAG, "Snackbar callback");
+
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(SpinnerActivity.this);
+                                builder1.setTitle("This is the title");
+                                builder1.setMessage("This is a Dialog");
+                                builder1.setCancelable(true);
+
+                                builder1.setPositiveButton(
+                                        "Yes",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Log.i(TAG, "Dialog YES");
+                                                dialog.cancel();
+                                            }
+                                        });
+
+                                builder1.setNegativeButton(
+                                        "No",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Log.i(TAG, "Dialog NO");
+                                                dialog.cancel();
+                                            }
+                                        });
+
+                                AlertDialog alert11 = builder1.create();
+                                alert11.show();
+                            }
+                        });
+
+                snackbar2.setActionTextColor(Color.RED);
+                View snackbarView = snackbar2.getView();
+                TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.GREEN);
+                snackbar2.show();
+                break;
+        }
     }
 
     @Override
@@ -187,4 +266,5 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
         super.onUserInteraction();
         userIsInteracting = true;
     }
+
 }
