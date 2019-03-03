@@ -173,7 +173,7 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
     public void onClick(View view) {
         int id = view.getId();
 
-        switch (id){
+        switch (id) {
             case R.id.bs1:
                 Toast.makeText(this, "This is a toast", Toast.LENGTH_LONG).show();
 
@@ -188,8 +188,8 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
             case R.id.bs2:
                 Snackbar snackbar = Snackbar
                         .make(view, "This is a Snackbar", Snackbar.LENGTH_LONG);
-
                 snackbar.show();
+
                 break;
             case R.id.bs3:
                 Snackbar snackbar2 = Snackbar
